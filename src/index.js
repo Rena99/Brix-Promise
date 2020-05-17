@@ -14,9 +14,9 @@ promise.then(
 
 const makeAllCaps = function functionToChainPromises(arr) {
     return new Promise(function (resolve, reject) {
-        let result=[];
+        let result = [];
         for (let i = 0; i < arr.length; i++) {
-            if (typeof arr[i] !== "string"){
+            if (typeof arr[i] !== "string") {
                 reject('Not every item is a string');
             }
             else {
@@ -27,11 +27,11 @@ const makeAllCaps = function functionToChainPromises(arr) {
     });
 };
 
-const chainPromise=makeAllCaps(["rena", "Ariel", 'Aviva', 'nosson']);
-let sortWords=function sortsWordsInAnArray(arr){
-    return arr.sort();
-}
-chainPromise.then(
-    result=>console.log(sortWords(result)),
-    error=>console.error(error)
-);
+const chainPromise = makeAllCaps(["rena", "Ariel", 'Aviva', 'nosson']);
+let sortWords = function sortsWordsInAnArray(promise) {
+    promise.then(
+        result => console.log(sortWords(result)),
+        error => console.error(error)
+    );
+};
+sortWords(chainPromise);
